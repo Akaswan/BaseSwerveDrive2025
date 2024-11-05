@@ -70,7 +70,7 @@ public class SwerveDrive extends SubsystemBase {
       new SwerveModuleState(),
       new SwerveModuleState()
     };
-    
+
     m_modulePositions = new SwerveModulePosition[] {
       new SwerveModulePosition(),
       new SwerveModulePosition(),
@@ -205,7 +205,7 @@ public class SwerveDrive extends SubsystemBase {
   public void drive(double throttle, double strafe, double steer, boolean isOpenLoop, boolean isFieldRelative) {
 
     if (throttle + strafe + steer != 0 && m_driveMode == DriveMode.XWHEELS) {
-      m_driveMode = DriveMode.TELEOP; 
+      m_driveMode = DriveMode.TELEOP;
     }
 
     switch (m_driveMode){
@@ -224,13 +224,13 @@ public class SwerveDrive extends SubsystemBase {
         m_moduleStates = m_kinematics.toSwerveModuleStates(m_chassisSpeeds);
 
         if (RobotBase.isSimulation()) m_simYaw += Units.radiansToDegrees(m_chassisSpeeds.omegaRadiansPerSecond * Constants.kdt);
-        
+
         break;
       case XWHEELS:
         Utils.copyModuleStates(DriveConstants.kXWheels, m_moduleStates);
         break;
     }
-    
+
     setModuleStates(isOpenLoop);
   }
 
