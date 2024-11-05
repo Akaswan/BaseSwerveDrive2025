@@ -243,8 +243,6 @@ public class SwerveDrive extends SubsystemBase {
     Logger.recordOutput("Swerve/Pose", m_poseEstimator.getEstimatedPosition());
     Logger.recordOutput("Swerve/Module Positions", getModulePositions());
     Logger.recordOutput("Swerve/Module States", getModuleStates());
-
-    Logger.recordOutput("Swerve/XWheels", DriveConstants.kXWheels);
   }
 
   public enum DriveMode {
