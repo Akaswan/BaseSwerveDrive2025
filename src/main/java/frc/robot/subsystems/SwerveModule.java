@@ -102,7 +102,9 @@ public class SwerveModule {
 
     public void setSwerveModuleState(SwerveModuleState moduleState, boolean isOpenLoop) {
 
-        Utils.optimize(moduleState, getModuleHeading());
+        moduleState = SwerveModuleState.optimize(moduleState, getModuleHeading());
+
+        moduleState.speedMetersPerSecond *= moduleState.angle.minus(getModuleHeading()).getCos();
 
         if (moduleState.angle.getDegrees() != m_lastAngle) {
             m_steerController.setReference(moduleState.angle.getDegrees(), ControlType.kPosition);
